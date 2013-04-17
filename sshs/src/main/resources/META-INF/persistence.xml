@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="sshs">
+	<persistence-unit name="SuiteMesh" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.org.module.Class</class>
+		<class>com.org.module.IdCard</class>
+		<class>com.org.module.Student</class>
+		<class>com.org.module.Teacher</class>
+		<properties>
+			<property name="hibernate.service.jdbc.connections.spi.provider_class" value="com.jolbox.bonecp.provider.BoneCPConnectionProvider"/>
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>   
+			<property name="hibernate.connection.username" value="postgres"/>   
+			<property name="hibernate.connection.password" value="123456"/>   
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/jpatest"/>
+			<property name="hibernate.max_fetch_depth" value="3"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.jdbc.fetch_size" value="18"/>
+			<property name="hibernate.jdbc.batch_size" value="10"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			
+		</properties>
 	</persistence-unit>
 </persistence>
