@@ -6,23 +6,24 @@ import java.util.List;
 
 
 /**
- * The persistent class for the class database table.
+ * The persistent class for the idcard database table.
  * 
  */
 @Entity
-public class Class implements Serializable {
+public class Idcard implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int id;
 
-	private String className;
+	@Lob
+	private String address;
 
 	//bi-directional many-to-one association to Student
-	@OneToMany(mappedBy="clazz")
+	@OneToMany(mappedBy="idcard")
 	private List<Student> students;
 
-	public Class() {
+	public Idcard() {
 	}
 
 	public int getId() {
@@ -33,12 +34,12 @@ public class Class implements Serializable {
 		this.id = id;
 	}
 
-	public String getClassName() {
-		return this.className;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setClassName(String className) {
-		this.className = className;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<Student> getStudents() {
@@ -51,14 +52,14 @@ public class Class implements Serializable {
 
 	public Student addStudent(Student student) {
 		getStudents().add(student);
-		student.setClazz(this);
+		student.setIdcard(this);
 
 		return student;
 	}
 
 	public Student removeStudent(Student student) {
 		getStudents().remove(student);
-		student.setClazz(null);
+		student.setIdcard(null);
 
 		return student;
 	}

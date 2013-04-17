@@ -3,14 +3,15 @@ package com.org.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.org.module.Student;
+import com.org.model.Student;
 import com.org.service.StudentService;
 
 @Results({
@@ -21,7 +22,7 @@ public class StudentAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
+	@Resource
 	StudentService studentService;
 	
 	private Student st = new Student();

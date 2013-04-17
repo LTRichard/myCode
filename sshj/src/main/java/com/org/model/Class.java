@@ -1,4 +1,4 @@
-package com.org.module;
+package com.org.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

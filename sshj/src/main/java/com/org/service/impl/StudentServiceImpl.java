@@ -3,19 +3,18 @@ package com.org.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.org.dao.BaseDao;
-import com.org.module.Student;
+import com.org.model.Student;
 import com.org.service.StudentService;
 
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
 	
-	@Autowired
+	@Resource
 	BaseDao baseDaoImpl;
 
 	public List<Student> findAll() {
