@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.org.common.QueryResult;
 import com.org.dao.BaseDao;
 @Component
+@Transactional
 public class BaseDaoImpl implements BaseDao {
 
 	@PersistenceContext protected EntityManager em;
@@ -96,7 +97,7 @@ public class BaseDaoImpl implements BaseDao {
 		}
 	}
 	/** 
-	 * 组装order by语句 
+	 * 缁勮order by璇彞 
 	 * @param orderby 
 	 * @return 
 	 */
@@ -112,9 +113,9 @@ public class BaseDaoImpl implements BaseDao {
 		return orderbyql.toString();
 	}
 	/**
-	 * 获取实体的名称 
+	 * 鑾峰彇瀹炰綋鐨勫悕绉�
 	 * @param <T>
-	 * @param entityClass 实体类 
+	 * @param entityClass 瀹炰綋绫�
 	 * @return
 	 */
 	protected <T> String getEntityName(Class<T> entityClass){

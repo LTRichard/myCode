@@ -30,7 +30,7 @@ public class Student implements Serializable {
 	private Idcard idcard;
 
 	//bi-directional many-to-one association to StudentTeacher
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="student",fetch=FetchType.EAGER)
 	private List<StudentTeacher> studentTeachers;
 
 	public Student() {
