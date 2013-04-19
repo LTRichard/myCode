@@ -66,9 +66,9 @@
 	</table>
 	<div style="border:1px solid">
 		<s:form action="" theme="simple" method="post">
-			<table>
+			<table border="1">
 				<tr>
-					<td><strong>学生信息编辑</strong></td>
+					<td colspan="8" align="center"><strong>学生信息编辑</strong></td>
 				</tr>
 				<tr>
 					<td>姓名：</td>
@@ -81,11 +81,11 @@
 					</td>
 					<td>班级：</td>
 					<td>
-						<s:select list="#{listClass}" name=""></s:select>
+						<s:select list="%{listClass}" name="" listKey="key" listValue="value"></s:select>
 					</td>
 					<td>老师：</td>
 					<td>
-						<s:checkboxlist list="#{listTeacher}" name=""></s:checkboxlist>
+						<s:checkboxlist list="%{listTeacher}" name="" listKey="key" listValue="value"></s:checkboxlist>
 					</td>
 				</tr>
 				<tr>

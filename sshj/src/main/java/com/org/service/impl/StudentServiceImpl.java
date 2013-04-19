@@ -3,9 +3,12 @@ package com.org.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.org.common.CodeCommon;
+import com.org.dao.MyMapDao;
 import com.org.model.Student;
 import com.org.service.StudentService;
 
@@ -16,13 +19,15 @@ import com.org.service.StudentService;
 @Service("studentService")
 public class StudentServiceImpl extends BaseService implements StudentService {
 
+	@Resource
+	MyMapDao myMapDao;
 	/* (non-Javadoc)
 	 * @see com.org.service.StudentService#findAll()
 	 */
 	public List<Student> findAll() {
 		List<Student> l = new ArrayList<Student>();
 		l = baseDaoImpl.getScrollData(Student.class).getResultlist();
-		
+		myMapDao.getMapData(Student.class, "id", "name", null, null, null);
 		return dealResult(CodeCommon._sb2jsp,l) ;
 	}
 	

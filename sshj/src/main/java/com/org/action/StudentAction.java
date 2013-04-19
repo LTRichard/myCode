@@ -10,7 +10,8 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.org.model.Class;
+import com.org.common.MyMap;
+import com.org.common.TagCommon;
 import com.org.model.Student;
 import com.org.model.Teacher;
 import com.org.service.ClassService;
@@ -40,26 +41,28 @@ public class StudentAction extends BaseAction {
 	ClassService classService;
 	@Resource
 	TeacherService teacherService;
+	@Resource
+	TagCommon tagCommon;
 	
 	private Student st = new Student();
 	private List<Student> listStudent = new ArrayList<Student>();
-	private List<Class> listClass = new ArrayList<Class>();
-	private List<Teacher> listTeacher = new ArrayList<Teacher>();
+	private List<MyMap> listClass = new ArrayList<MyMap>();
+	private List<MyMap> listTeacher = new ArrayList<MyMap>();
 	private int id = 0;
 
-	public List<Class> getListClass() {
+	public List<MyMap> getListClass() {
 		return listClass;
 	}
 
-	public void setListClass(List<Class> listClass) {
+	public void setListClass(List<MyMap> listClass) {
 		this.listClass = listClass;
 	}
 
-	public List<Teacher> getListTeacher() {
+	public List<MyMap> getListTeacher() {
 		return listTeacher;
 	}
 
-	public void setListTeacher(List<Teacher> listTeacher) {
+	public void setListTeacher(List<MyMap> listTeacher) {
 		this.listTeacher = listTeacher;
 	}
 
@@ -88,6 +91,12 @@ public class StudentAction extends BaseAction {
 	}
 
 
+	public void initMapData() {
+		
+		listClass = tagCommon.getMapData(com.org.model.Class.class, "id", "className", null, null, null);
+		listTeacher = tagCommon.getMapData(Teacher.class, "id", "teacherName", null, null, null);
+	}
+	
 	/**
 	 * 查询所哟学生信息
 	 * @author LT.x-wang
@@ -98,9 +107,8 @@ public class StudentAction extends BaseAction {
 	 * @throws NoSuchMethodException 
 	 */
 	public String showAllStudent() throws NoSuchMethodException, SecurityException {
+		initMapData();
 		listStudent = studentService.findAll();
-		listClass = classService.findAll();
-		listTeacher = teacherService.findAll();
 		return "success";
 	}
 	
